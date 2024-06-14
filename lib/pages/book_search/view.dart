@@ -93,7 +93,7 @@ class _SearchBookItem extends StatelessWidget {
         child: Row(
           children: [
             Image.asset(
-              searchBook.cover ?? Assets.imageImg,
+              searchBook.cover ?? Assets.defaultIcon,
               height: 80,
               fit: BoxFit.fitHeight,
             ),

@@ -25,6 +25,8 @@ class BookDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bookImage = AssetImage(state.bookInfo.cover ?? Assets.defaultIcon);
+
     return Column(
       children: [
         Expanded(
@@ -38,8 +40,7 @@ class BookDetailPage extends StatelessWidget {
                       height: 200,
                       width: double.infinity,
                       child: Image(
-                        image:
-                            AssetImage(state.bookInfo.cover ?? Assets.imageImg),
+                        image: bookImage,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -77,8 +78,8 @@ class BookDetailPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              child: Image.asset(
-                                state.bookInfo.cover ?? Assets.imageImg,
+                              child: Image(
+                                image: bookImage,
                                 height: 160,
                                 fit: BoxFit.fitHeight,
                               ),

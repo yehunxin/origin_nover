@@ -55,7 +55,7 @@ class BookItem extends StatelessWidget {
             Get.toNamed(AppRoutes.bookDetail, arguments: book);
           },
           child: Image.asset(
-            book.cover ?? Assets.imageImg,
+            book.cover ?? Assets.defaultIcon,
             height: 80,
             fit: BoxFit.fitHeight,
           ),
