@@ -19,7 +19,7 @@ class BookSearchLogic extends GetxController {
         id: 1,
         name: '万相之王',
         author: '天蚕土豆',
-        cover: Assets.testWxzw,
+        cover: Assets.imageWxzw,
         bookSourceId: 1,
       ),
     );

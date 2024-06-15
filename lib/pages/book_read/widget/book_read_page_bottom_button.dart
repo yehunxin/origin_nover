@@ -15,8 +15,12 @@ class BookReadPageBottomButton extends StatelessWidget {
       onPressed: onPressed,
       child: Column(
         children: [
-          Icon(icon),
-          Text(text),
+          Icon(
+            icon,
+          ),
+          Text(
+            text,
+          ),
         ],
       ),
     );

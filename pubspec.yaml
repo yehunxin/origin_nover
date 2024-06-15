@@ -80,6 +80,8 @@ flutter:
     - assets/
     - assets/image/
     - assets/test/
+    - assets/test/image/
+    - assets/test/content/
 
 
 

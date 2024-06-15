@@ -30,7 +30,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.bookRead,
-      page: () => const BookReadPage(),
+      page: () => BookReadPage(),
       binding: BookReadBinding(),
     ),
   ];

@@ -2,7 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String contentChapterI = 'assets/test/content/chapter_i.txt';
+  static const String contentChapterIi = 'assets/test/content/chapter_ii.txt';
   static const String defaultBook = 'assets/image/default/book.png';
   static const String defaultIcon = 'assets/image/default/icon.png';
-  static const String testWxzw = 'assets/test/wxzw.png';
+  static const String imageWxzw = 'assets/test/image/wxzw.png';
 }
