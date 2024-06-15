@@ -141,7 +141,12 @@ class _BookReadPageState extends State<BookReadPage> {
         // TODO 缓存
         // TODO 翻页
         // 阅读设置
-        BookReadPageBottomButton(),
+        BookReadPageBottomButton(
+          text: S
+              .of(context)
+              .setting,
+          icon: Icons.settings,
+        ),
       ],
     );
   }
