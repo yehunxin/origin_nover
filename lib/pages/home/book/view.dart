@@ -51,7 +51,6 @@ class BookItem extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            // TODO: 跳转到书籍详情页
             Get.toNamed(AppRoutes.bookDetail, arguments: book);
           },
           child: Image.asset(

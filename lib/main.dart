@@ -50,9 +50,12 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         S.delegate,
-        GlobalMaterialLocalizations.delegate, // 指定本地化的字符串和一些其他的值
-        GlobalCupertinoLocalizations.delegate, // 对应的Cupertino风格
-        GlobalWidgetsLocalizations.delegate, // 指定默认的文本排列方向, 由左到右或由右到左
+        // 指定本地化的字符串和一些其他的值
+        GlobalMaterialLocalizations.delegate,
+        // 对应的Cupertino风格
+        GlobalCupertinoLocalizations.delegate,
+        // 指定默认的文本排列方向, 由左到右或由右到左
+        GlobalWidgetsLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
     );

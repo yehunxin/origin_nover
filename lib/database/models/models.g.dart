@@ -16408,8 +16408,8 @@ extension RuleTocQueryProperty3<R1, R2>
 
 _$BookInfoImpl _$$BookInfoImplFromJson(Map<String, dynamic> json) =>
     _$BookInfoImpl(
-      id: json['id'] as int,
-      bookSourceId: json['bookSourceId'] as int,
+      id: (json['id'] as num).toInt(),
+      bookSourceId: (json['bookSourceId'] as num).toInt(),
       name: json['name'] as String,
       author: json['author'] as String?,
       cover: json['cover'] as String?,
@@ -16426,8 +16426,8 @@ Map<String, dynamic> _$$BookInfoImplToJson(_$BookInfoImpl instance) =>
 
 _$BookSearchInfoImpl _$$BookSearchInfoImplFromJson(Map<String, dynamic> json) =>
     _$BookSearchInfoImpl(
-      id: json['id'] as int,
-      bookSourceId: json['bookSourceId'] as int,
+      id: (json['id'] as num).toInt(),
+      bookSourceId: (json['bookSourceId'] as num).toInt(),
       searchUrl: json['searchUrl'] as String,
       method: json['method'] as String,
       charset: json['charset'] as String,
@@ -16449,23 +16449,23 @@ Map<String, dynamic> _$$BookSearchInfoImplToJson(
 
 _$BookSourceImpl _$$BookSourceImplFromJson(Map<String, dynamic> json) =>
     _$BookSourceImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       bookSourceName: json['bookSourceName'] as String,
       bookSourceGroup: json['bookSourceGroup'] as String?,
       bookSourceComment: json['bookSourceComment'] as String?,
       bookSourceUrl: json['bookSourceUrl'] as String,
-      customOrder: json['customOrder'] as int?,
+      customOrder: (json['customOrder'] as num?)?.toInt(),
       bookUrlPattern: json['bookUrlPattern'] as String?,
-      bookSourceType: json['bookSourceType'] as int?,
+      bookSourceType: (json['bookSourceType'] as num?)?.toInt(),
       enabled: json['enabled'] as bool? ?? false,
       enabledCookieJar: json['enabledCookieJar'] as bool?,
       enabledExplore: json['enabledExplore'] as bool?,
       header: json['header'] as String?,
       loginUrl: json['loginUrl'] as String?,
-      lastUpdateTime: json['lastUpdateTime'] as int?,
+      lastUpdateTime: (json['lastUpdateTime'] as num?)?.toInt(),
       exploreUrl: json['exploreUrl'] as String?,
       searchUrl: json['searchUrl'] as String?,
-      weight: json['weight'] as int?,
+      weight: (json['weight'] as num?)?.toInt(),
       isEnabled: json['isEnabled'] as bool?,
     );
 
@@ -16493,8 +16493,8 @@ Map<String, dynamic> _$$BookSourceImplToJson(_$BookSourceImpl instance) =>
 
 _$RuleBookInfoImpl _$$RuleBookInfoImplFromJson(Map<String, dynamic> json) =>
     _$RuleBookInfoImpl(
-      id: json['id'] as int,
-      bookSourceId: json['bookSourceId'] as int,
+      id: (json['id'] as num).toInt(),
+      bookSourceId: (json['bookSourceId'] as num).toInt(),
       author: json['author'] as String?,
       coverUrl: json['coverUrl'] as String?,
       init: json['init'] as String?,
@@ -16525,8 +16525,8 @@ Map<String, dynamic> _$$RuleBookInfoImplToJson(_$RuleBookInfoImpl instance) =>
 
 _$RuleContentImpl _$$RuleContentImplFromJson(Map<String, dynamic> json) =>
     _$RuleContentImpl(
-      id: json['id'] as int,
-      bookSourceId: json['bookSourceId'] as int,
+      id: (json['id'] as num).toInt(),
+      bookSourceId: (json['bookSourceId'] as num).toInt(),
       content: json['content'] as String?,
       nextContentUrl: json['nextContentUrl'] as String?,
       replaceRegex: json['replaceRegex'] as String?,
@@ -16543,8 +16543,8 @@ Map<String, dynamic> _$$RuleContentImplToJson(_$RuleContentImpl instance) =>
 
 _$RuleSearchImpl _$$RuleSearchImplFromJson(Map<String, dynamic> json) =>
     _$RuleSearchImpl(
-      id: json['id'] as int,
-      bookSourceId: json['bookSourceId'] as int,
+      id: (json['id'] as num).toInt(),
+      bookSourceId: (json['bookSourceId'] as num).toInt(),
       name: json['name'] as String?,
       author: json['author'] as String?,
       bookList: json['bookList'] as String?,
@@ -16575,8 +16575,8 @@ Map<String, dynamic> _$$RuleSearchImplToJson(_$RuleSearchImpl instance) =>
 
 _$RuleTocImpl _$$RuleTocImplFromJson(Map<String, dynamic> json) =>
     _$RuleTocImpl(
-      id: json['id'] as int,
-      bookSourceId: json['bookSourceId'] as int,
+      id: (json['id'] as num).toInt(),
+      bookSourceId: (json['bookSourceId'] as num).toInt(),
       chapterList: json['chapterList'] as String?,
       chapterName: json['chapterName'] as String?,
       chapterUrl: json['chapterUrl'] as String?,
