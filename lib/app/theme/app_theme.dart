@@ -63,3 +63,8 @@ class ConfirmTheme {
 }
 
 class BookItemTheme {}
+
+class BookReadTheme {
+  static const radius = 4.0;
+  static const padding = 16.0;
+}

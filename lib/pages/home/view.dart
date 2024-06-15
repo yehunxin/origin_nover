@@ -6,7 +6,7 @@ import 'package:origin_novel/pages/home/logic.dart';
 import 'package:origin_novel/pages/home/setting/view.dart';
 import 'package:origin_novel/pages/home/source/view.dart';
 import 'package:origin_novel/pages/home/state.dart';
-import 'package:origin_novel/utils/platform_utils.dart';
+import 'package:origin_novel/util/platform_utils.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});

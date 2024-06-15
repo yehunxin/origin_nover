@@ -1,4 +1,4 @@
-part of '../utils/dialog_utils.dart';
+part of 'dialog_utils.dart';
 
 class BaseToast extends StatelessWidget {
   const BaseToast({

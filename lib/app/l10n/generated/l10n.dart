@@ -119,6 +119,76 @@ class S {
       args: [],
     );
   }
+
+  /// `目录`
+  String get directory {
+    return Intl.message(
+      '目录',
+      name: 'directory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `设置`
+  String get setting {
+    return Intl.message(
+      '设置',
+      name: 'setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `缓存`
+  String get cache {
+    return Intl.message(
+      '缓存',
+      name: 'cache',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `清除`
+  String get clear {
+    return Intl.message(
+      '清除',
+      name: 'clear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `翻页`
+  String get flip {
+    return Intl.message(
+      '翻页',
+      name: 'flip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `上一章`
+  String get previousChapter {
+    return Intl.message(
+      '上一章',
+      name: 'previousChapter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `下一章`
+  String get nextChapter {
+    return Intl.message(
+      '下一章',
+      name: 'nextChapter',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

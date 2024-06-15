@@ -78,7 +78,7 @@ class BookSearchPage extends StatelessWidget {
 }
 
 class _SearchBookItem extends StatelessWidget {
-  const _SearchBookItem({super.key, required this.searchBook});
+  const _SearchBookItem({required this.searchBook});
 
   final BookInfo searchBook;
 

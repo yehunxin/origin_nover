@@ -22,11 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "cache": MessageLookupByLibrary.simpleMessage("缓存"),
         "cancel": MessageLookupByLibrary.simpleMessage("取消"),
+        "clear": MessageLookupByLibrary.simpleMessage("清除"),
         "delete": MessageLookupByLibrary.simpleMessage("删除"),
+        "directory": MessageLookupByLibrary.simpleMessage("目录"),
         "disabled": MessageLookupByLibrary.simpleMessage("禁用"),
         "enabled": MessageLookupByLibrary.simpleMessage("启用"),
+        "flip": MessageLookupByLibrary.simpleMessage("翻页"),
+        "nextChapter": MessageLookupByLibrary.simpleMessage("下一章"),
         "ok": MessageLookupByLibrary.simpleMessage("确定"),
+        "previousChapter": MessageLookupByLibrary.simpleMessage("上一章"),
+        "setting": MessageLookupByLibrary.simpleMessage("设置"),
         "tips": MessageLookupByLibrary.simpleMessage("提示"),
         "warning": MessageLookupByLibrary.simpleMessage("警告")
       };

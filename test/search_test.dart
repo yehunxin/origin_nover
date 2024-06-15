@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:origin_novel/utils/log_utils.dart';
+import 'package:origin_novel/util/log_utils.dart';
 
 void main() {
   String searchUrl =

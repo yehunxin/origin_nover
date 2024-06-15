@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:origin_novel/app/theme/app_theme.dart';
+import 'package:get/get.dart';
 
-import '../app/l10n/generated/l10n.dart';
+import '../../app/l10n/generated/l10n.dart';
+import '../../app/theme/app_theme.dart';
 
-part '../widget/base_confirm.dart';
-part '../widget/base_toast.dart';
+part 'base_confirm.dart';
+part 'base_toast.dart';
 
 class DialogUtils {
   DialogUtils._();

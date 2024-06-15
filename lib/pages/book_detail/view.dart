@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:origin_novel/generated/assets.dart';
-import 'package:origin_novel/utils/color_utils.dart';
+import 'package:origin_novel/util/color_utils.dart';
 import 'package:origin_novel/widget/gap.dart';
 
+import '../../app/routes/app_routes.dart';
 import 'logic.dart';
 
 const _typeLabelPadding = EdgeInsets.symmetric(
@@ -31,7 +32,7 @@ class BookDetailPage extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            color: context.theme.colorScheme.surfaceVariant,
+            color: context.theme.colorScheme.surfaceContainerHighest,
             child: ListView(
               children: [
                 Stack(
@@ -49,8 +50,7 @@ class BookDetailPage extends StatelessWidget {
                       child: Container(
                         width: double.infinity,
                         height: 200,
-                        color:
-                            context.theme.colorScheme.background.withAlpha(40),
+                        color: context.theme.colorScheme.surface.withAlpha(40),
                       ),
                     ),
                     Positioned(
@@ -66,8 +66,7 @@ class BookDetailPage extends StatelessWidget {
                                 boxShadow: [
                                   BoxShadow(
                                     // 阴影颜色
-                                    color: context
-                                        .theme.colorScheme.onBackground
+                                    color: context.theme.colorScheme.onSurface
                                         .withAlpha(80),
                                     // 阴影偏移量
                                     offset: const Offset(1, 1),
@@ -123,7 +122,7 @@ class BookDetailPage extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  color: context.theme.colorScheme.background,
+                  color: context.theme.colorScheme.surface,
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +158,7 @@ class BookDetailPage extends StatelessWidget {
         ),
         // 按钮 加入书架 开始阅读
         Container(
-          color: context.theme.colorScheme.surfaceVariant,
+          color: context.theme.colorScheme.surfaceContainerHighest,
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
@@ -173,7 +172,7 @@ class BookDetailPage extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    //TODO: 跳转到看书页
+                    Get.toNamed(AppRoutes.bookRead, arguments: state.bookInfo);
                   },
                   child: const Text('阅读'),
                 ),

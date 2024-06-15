@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:origin_novel/app/routes/app_routes.dart';
-import 'package:origin_novel/database/models/models.dart';
-import 'package:origin_novel/generated/assets.dart';
-import 'package:origin_novel/pages/home/book/logic.dart';
-import 'package:origin_novel/widget/gap.dart';
+
+import '../../../app/routes/app_routes.dart';
+import '../../../database/models/models.dart';
+import '../../../generated/assets.dart';
+import '../../../widget/gap.dart';
+import 'logic.dart';
 
 class BookPage extends StatelessWidget {
   BookPage({super.key});
@@ -48,6 +49,7 @@ class BookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
         GestureDetector(
           onTap: () {
@@ -63,29 +65,34 @@ class BookItem extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             onTap: () {
-              // TODO: 跳转到看书页
+              Get.toNamed(AppRoutes.bookRead, arguments: book);
             },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  book.name,
-                  style: context.textTheme.titleMedium,
-                ),
-                const Gap.vb(),
-                Text(
-                  '${book.author ?? '未知'}  ·  1章未读',
-                  style: context.textTheme.labelMedium
-                      ?.copyWith(color: Colors.grey),
-                ),
-                const Gap.vn(),
-                Text(
-                  '1天前更新  ·  第123章 xxx',
-                  style: context.textTheme.labelMedium
-                      ?.copyWith(color: Colors.grey),
-                ),
-              ],
+            child: Container(
+              width: double.infinity,
+              color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    book.name,
+                    style: context.textTheme.titleMedium,
+                  ),
+                  const Gap.vb(),
+                  Text(
+                    '${book.author ?? '未知'}  ·  1章未读',
+                    style: context.textTheme.labelMedium
+                        ?.copyWith(color: Colors.grey),
+                  ),
+                  const Gap.vn(),
+                  Text(
+                    '1天前更新  ·  第123章 xxx',
+                    style: context.textTheme.labelMedium
+                        ?.copyWith(color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

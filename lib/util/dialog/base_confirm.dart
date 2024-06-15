@@ -1,4 +1,4 @@
-part of '../utils/dialog_utils.dart';
+part of 'dialog_utils.dart';
 
 /// 确认弹窗
 /// [title] 标题 默认为提示
@@ -38,7 +38,7 @@ class BaseConfirm extends StatelessWidget {
           const BoxConstraints.tightFor(width: ConfirmTheme.dialogWidth),
       child: Material(
         borderRadius: BorderRadius.circular(ConfirmTheme.radius),
-        color: context.theme.colorScheme.background,
+        color: context.theme.colorScheme.surface,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
