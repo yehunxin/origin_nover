@@ -1,5 +1,5 @@
-import 'package:origin_novel/database/models/models.dart';
-import 'package:origin_novel/generated/assets.dart';
+import '../../../app/constants/assets.dart';
+import '../../../app/database/models/models.dart';
 
 class BookState {
   late List<BookInfo> myBooks;

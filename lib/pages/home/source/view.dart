@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:origin_novel/app/l10n/generated/l10n.dart';
-import 'package:origin_novel/database/models/models.dart';
-import 'package:origin_novel/pages/home/source/logic.dart';
-import 'package:origin_novel/pages/home/source/state.dart';
-import 'package:origin_novel/widget/gap.dart';
+
+import '../../../app/database/models/models.dart';
+import '../../../app/l10n/generated/l10n.dart';
+import '../../../widget/gap.dart';
+import 'logic.dart';
+import 'state.dart';
 
 class SourcePage extends StatelessWidget {
   SourcePage({super.key});

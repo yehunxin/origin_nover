@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'zh';
 
+  static String m0(page) => "第${page}页";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "cache": MessageLookupByLibrary.simpleMessage("缓存"),
@@ -32,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "flip": MessageLookupByLibrary.simpleMessage("翻页"),
         "nextChapter": MessageLookupByLibrary.simpleMessage("下一章"),
         "ok": MessageLookupByLibrary.simpleMessage("确定"),
+        "pageN": m0,
         "previousChapter": MessageLookupByLibrary.simpleMessage("上一章"),
         "setting": MessageLookupByLibrary.simpleMessage("设置"),
         "tips": MessageLookupByLibrary.simpleMessage("提示"),

@@ -8,48 +8,34 @@ class BookReadState {
   double totalDrag = 0.0;
 
   /// 小说内容
-  late String bookContent;
+  String bookContent = '';
 
   /// 是否显示 AppBar
-  late bool isAppBarVisible;
+  bool isAppBarVisible = true;
 
-  /// 小说内容滚动控制器
-  late final ScrollController bookContentScrollController;
+  /// textPainter
+  late TextPainter textPainter;
 
   /// 对内容分页
-  late int pageSize;
-  late int currentPage;
-  late List<String> bookContentList;
+  int pageSize = 1;
+  int currentPage = 0;
+  List<String> bookContentList = [''];
 
   /// 当前屏幕大小
-  late double screenWidth;
-  late double screenHeight;
+  double screenWidth = 0;
+  double screenHeight = 0;
 
   /// 小说字体配置
-  late double fontSize;
-  late double fontHeight;
+  late TextStyle contentStyle;
 
   /// 是否修改了字体大小
-  late bool isFontSizeChanged;
+  bool isFontSizeChanged = false;
 
   /// 每页最多多少行
-  late int lineCount;
+  int lineCount = -1;
 
   /// 每页最多多少列
-  late int charCount;
+  int charCount = -1;
 
-  BookReadState() {
-    lineCount = -1;
-    charCount = -1;
-    fontSize = 18.0;
-    fontHeight = 1.5;
-    bookContent = '';
-    isAppBarVisible = true;
-    isFontSizeChanged = false;
-    currentPage = 0;
-    pageSize = 0;
-    bookContentList = [];
-    screenWidth = 0;
-    screenHeight = 0;
-  }
+  BookReadState();
 }

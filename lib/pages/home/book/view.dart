@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../app/constants/assets.dart';
+import '../../../app/database/models/models.dart';
 import '../../../app/routes/app_routes.dart';
-import '../../../database/models/models.dart';
-import '../../../generated/assets.dart';
 import '../../../widget/gap.dart';
 import 'logic.dart';
 

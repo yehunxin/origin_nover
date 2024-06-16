@@ -21,6 +21,7 @@ class AppDatabase {
         RuleContentSchema,
         RuleSearchSchema,
         RuleTocSchema,
+        BookReadSettingSchema,
       ],
       directory: dir.path,
     );

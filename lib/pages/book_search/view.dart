@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:origin_novel/database/models/models.dart';
-import 'package:origin_novel/generated/assets.dart';
-import 'package:origin_novel/widget/gap.dart';
 
+import '../../app/constants/assets.dart';
+import '../../app/database/models/models.dart';
+import '../../widget/gap.dart';
 import 'logic.dart';
 
 class BookSearchPage extends StatelessWidget {

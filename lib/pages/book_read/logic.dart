@@ -4,32 +4,80 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:origin_novel/app/theme/app_theme.dart';
-import 'package:origin_novel/generated/assets.dart';
-import 'package:origin_novel/util/dialog/dialog_utils.dart';
-import 'package:origin_novel/util/log_utils.dart';
+import 'package:isar/isar.dart';
+import 'package:origin_novel/app/constants/default_setting.dart';
 
+import '../../app/constants/assets.dart';
+import '../../app/database/app_database.dart';
+import '../../app/database/models/models.dart';
+import '../../app/theme/app_theme.dart';
+import '../../util/dialog/dialog_utils.dart';
+import '../../util/log_utils.dart';
 import 'state.dart';
 
 class BookReadLogic extends GetxController {
   final BookReadState state = BookReadState();
+  late TextPainter _textPainter;
+  final _isar = AppDatabase.isarInstance;
 
   @override
   void onInit() {
     super.onInit();
-    state.bookContentScrollController = ScrollController();
+    // 读取默认设置
+    final findFirst = _isar.bookReadSettings
+            .where()
+            .idEqualTo(DefaultSetting.defaultBookReadSettingId)
+            .findFirst() ??
+        BookReadSetting(
+          id: DefaultSetting.defaultBookReadSettingId,
+          updateTime: DateTime.now(),
+          fontSize: DefaultSetting.defaultBookReadSettingFontSize,
+          fontHeight: DefaultSetting.defaultBookReadSettingFontHeight,
+          wordSpacing: DefaultSetting.defaultBookReadSettingWordSpacing,
+          letterSpacing: DefaultSetting.defaultBookReadSettingLetterSpacing,
+        );
+    // 保存默认设置
+    _isar.write(
+      (isar) {
+        isar.bookReadSettings.put(findFirst);
+      },
+    );
+    // 创建TextStyle
+    state.contentStyle = TextStyle(
+      fontSize: findFirst.fontSize,
+      height: findFirst.fontHeight,
+      wordSpacing: findFirst.wordSpacing,
+      letterSpacing: findFirst.letterSpacing,
+      fontFamily: findFirst.fontFamily,
+    );
   }
 
   @override
   void onReady() {
     super.onReady();
+    _textPainter = TextPainter(
+      text: TextSpan(
+        text: "测",
+        style: state.contentStyle,
+      ),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    )..layout(
+        minWidth: 0,
+        maxWidth: state.contentStyle.fontSize ??
+            DefaultSetting.defaultBookReadSettingFontSize * 2);
     loadChapter(chapter: '1');
   }
 
   @override
   void onClose() {
-    state.bookContentScrollController.dispose();
+    _textPainter.dispose();
     super.onClose();
+  }
+
+  void onPageProcessChange(double value) {
+    state.currentPage = value.toInt();
+    update();
   }
 
   void onDragStart(DragStartDetails details) {
@@ -94,12 +142,6 @@ class BookReadLogic extends GetxController {
     state.bookContent = await rootBundle.loadString(Assets.contentChapterI);
     _splitBookContent();
     update();
-    // 滚动到顶部
-    await state.bookContentScrollController.animateTo(
-      0,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
-    );
     await DialogUtils.dismiss();
   }
 
@@ -110,12 +152,6 @@ class BookReadLogic extends GetxController {
     state.bookContent = await rootBundle.loadString(Assets.contentChapterIi);
     _splitBookContent();
     update();
-    // 滚动到顶部
-    await state.bookContentScrollController.animateTo(
-      0,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
-    );
     await DialogUtils.dismiss();
   }
 
@@ -138,16 +174,11 @@ class BookReadLogic extends GetxController {
         var line = contentLineList[traversalLength];
         final strLength = line.length;
 
-        // 跳过空行
-        // if (line == '\r' || strLength == 0) {
-        //   currentLine++;
-        //   continue;
-        // }
-
         currentPageContent.add(line);
         // 如果当前行的长度大于最大长度
         if (strLength > state.charCount) {
           final ceil = (strLength / state.charCount).ceil();
+          traversalLength += ceil - 1;
           currentLine += ceil;
           continue;
         }
@@ -172,6 +203,10 @@ class BookReadLogic extends GetxController {
 
   /// 计算页面最多放多少行文字和每行多少个字
   void _calculate() {
+    // 重新初始化
+    state.currentPage = 0;
+    state.pageSize = 0;
+    state.bookContentList = [];
     final BuildContext context = Get.context!;
     // 计算页面最多放多少行文字
     double screenHeight = context.height;
@@ -185,30 +220,20 @@ class BookReadLogic extends GetxController {
       return;
     }
 
-    final TextPainter textPainter = TextPainter(
-      text: TextSpan(
-        text: "测",
-        style: TextStyle(
-          fontSize: state.fontSize,
-          height: state.fontHeight,
-        ),
-      ),
-      maxLines: 1,
-      textDirection: TextDirection.ltr,
-    )..layout(minWidth: 0, maxWidth: state.fontSize * 2);
     // 一个文字大小
-    final fontHeight = textPainter.height;
-    final fontWidth = textPainter.width;
+    final fontHeight = _textPainter.height;
+    final fontWidth = _textPainter.width;
     LogUtils.d('fontHeight: $fontHeight, fontWidth: $fontWidth');
     // 计算每行多少个字
     final double lineWidth = screenWidth - BookReadTheme.padding * 2;
     final double lineHeight = screenHeight - BookReadTheme.padding * 2;
     // 向上取整
     final int lineCount = (lineHeight / fontHeight).floor();
-    final int charCount = (lineWidth / fontWidth).ceil();
+    final int charCount = (lineWidth / fontWidth).floor();
     state.lineCount = lineCount;
     state.charCount = charCount;
     state.screenWidth = screenWidth;
     state.screenHeight = screenHeight;
+    LogUtils.d('lineCount: $lineCount, charCount: $charCount');
   }
 }

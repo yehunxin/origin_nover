@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:origin_novel/app/database/app_database.dart';
 import 'package:origin_novel/app/routes/app_pages.dart';
 import 'package:origin_novel/app/theme/app_theme.dart';
-import 'package:origin_novel/database/app_database.dart';
 
 import 'app/l10n/generated/l10n.dart';
 import 'app/net/http_client.dart';

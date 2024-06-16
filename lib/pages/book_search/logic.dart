@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:isar/isar.dart';
-import 'package:origin_novel/database/app_database.dart';
-import 'package:origin_novel/database/models/models.dart';
+import 'package:origin_novel/app/database/app_database.dart';
 
-import '../../../generated/assets.dart';
+import '../../app/constants/assets.dart';
+import '../../app/database/models/models.dart';
 import 'state.dart';
 
 class BookSearchLogic extends GetxController {

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:isar/isar.dart';
-import 'package:origin_novel/database/app_database.dart';
-import 'package:origin_novel/database/models/models.dart';
 
+import '../../../app/database/app_database.dart';
+import '../../../app/database/models/models.dart';
 import 'state.dart';
 
 class SourceLogic extends GetxController {

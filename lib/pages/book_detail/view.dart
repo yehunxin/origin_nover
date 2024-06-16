@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:origin_novel/generated/assets.dart';
+import 'package:origin_novel/app/constants/assets.dart';
 import 'package:origin_novel/util/color_utils.dart';
 import 'package:origin_novel/widget/gap.dart';
 

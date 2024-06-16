@@ -7,7 +7,8 @@ import '../../app/theme/app_theme.dart';
 import '../../widget/gap.dart';
 import 'widget/book_read_page_bottom_button.dart';
 
-const double _bottomBarHeight = 128.0;
+const double _bottomBarHeight = 140.0;
+const double _opacity = 0.8;
 
 class BookReadPage extends StatelessWidget {
   BookReadPage({super.key});
@@ -49,7 +50,7 @@ class BookReadPage extends StatelessWidget {
         child: AppBar(
           title: const Text('小说标题'),
           backgroundColor:
-              context.theme.appBarTheme.backgroundColor?.withOpacity(0.5),
+              context.theme.appBarTheme.backgroundColor?.withOpacity(_opacity),
         ),
       );
     });
@@ -65,26 +66,20 @@ class BookReadPage extends StatelessWidget {
         onHorizontalDragStart: logic.onDragStart,
         onHorizontalDragUpdate: logic.onDragUpdate,
         onHorizontalDragEnd: logic.onDragEnd,
-        child: SingleChildScrollView(
-          controller: state.bookContentScrollController,
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(BookReadTheme.padding),
-            child: Text(
-              state.bookContentList.isEmpty
-                  ? ''
-                  : state.bookContentList[state.currentPage],
-              style: TextStyle(
-                fontSize: state.fontSize,
-                height: state.fontHeight,
-              ),
-            ),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          padding: const EdgeInsets.all(BookReadTheme.padding),
+          child: Text(
+            state.bookContentList[state.currentPage],
+            style: state.contentStyle,
           ),
         ),
       );
     });
   }
 
+  /// 底部栏
   Widget _buildBottomNavigationBar(BuildContext context) {
     return GetBuilder<BookReadLogic>(builder: (logic) {
       return AnimatedPositioned(
@@ -102,8 +97,8 @@ class BookReadPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              // 上一章 下一章
-              _buildChangeChaptersButtons(context),
+              // 上一章 下一章 页进度
+              _buildChangeChaptersButtonsAndProcess(context),
               const Gap.vn(),
               // 功能栏
               _buildFunctionBar(context),
@@ -115,26 +110,44 @@ class BookReadPage extends StatelessWidget {
   }
 
   /// 上一章 下一章
-  Row _buildChangeChaptersButtons(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextButton(
-          onPressed: () async {
-            // TODO: 上一章
-            await logic.previousChapter();
-          },
-          child: Text(S.of(context).previousChapter),
-        ),
-        TextButton(
-          onPressed: () async {
-            // TODO: 下一章
-            await logic.nextChapter();
-          },
-          child: Text(S.of(context).nextChapter),
-        ),
-      ],
+  Widget _buildChangeChaptersButtonsAndProcess(BuildContext context) {
+    return Container(
+      color: context.theme.colorScheme.surface.withOpacity(0.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // 上一章
+          TextButton(
+            onPressed: () async {
+              // TODO: 上一章
+              await logic.previousChapter();
+            },
+            child: Text(S.of(context).previousChapter),
+          ),
+          // 进度条
+          SizedBox(
+            width: context.width * 0.6,
+            child: Slider(
+              value: state.currentPage.toDouble(),
+              min: 0.0,
+              max: state.pageSize.toDouble() - 1,
+              divisions:
+                  state.pageSize == 1 ? state.pageSize : (state.pageSize - 1),
+              label: S.of(context).pageN(state.currentPage + 1),
+              onChanged: logic.onPageProcessChange,
+            ),
+          ),
+          // 下一章
+          TextButton(
+            onPressed: () async {
+              // TODO: 下一章
+              await logic.nextChapter();
+            },
+            child: Text(S.of(context).nextChapter),
+          ),
+        ],
+      ),
     );
   }
 
@@ -142,7 +155,7 @@ class BookReadPage extends StatelessWidget {
   Widget _buildFunctionBar(BuildContext context) {
     return Expanded(
       child: Container(
-        color: context.theme.colorScheme.surface.withOpacity(0.5),
+        color: context.theme.colorScheme.surface.withOpacity(_opacity),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

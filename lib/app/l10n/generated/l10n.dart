@@ -170,6 +170,16 @@ class S {
     );
   }
 
+  /// `第{page}页`
+  String pageN(int page) {
+    return Intl.message(
+      '第$page页',
+      name: 'pageN',
+      desc: '',
+      args: [page],
+    );
+  }
+
   /// `上一章`
   String get previousChapter {
     return Intl.message(

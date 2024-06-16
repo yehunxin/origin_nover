@@ -1,4 +1,4 @@
-import 'package:origin_novel/database/models/models.dart';
+import '../../../app/database/models/models.dart';
 
 class SourceState {
   late List<BookSource> allSources;

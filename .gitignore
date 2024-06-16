@@ -27,6 +27,8 @@ Cargo.lock
 build/
 coverage/
 lib/generated_plugin_registrant.dart
+**/*.g.dart
+**/*.freezed.dart
 pubspec.lock
 
 # Android related

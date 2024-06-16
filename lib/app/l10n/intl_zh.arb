@@ -12,6 +12,16 @@
   "cache": "缓存",
   "clear": "清除",
   "flip": "翻页",
+  "pageN": "第{page}页",
+  "@pageN": {
+    "placeholders": {
+      "page": {
+        "type": "int",
+        "example": "1",
+        "description": "页码"
+      }
+    }
+  },
   "previousChapter": "上一章",
   "nextChapter": "下一章"
 }
