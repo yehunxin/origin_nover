@@ -29,6 +29,7 @@ coverage/
 lib/generated_plugin_registrant.dart
 **/*.g.dart
 **/*.freezed.dart
+**/l10n/generated/
 pubspec.lock
 
 # Android related
