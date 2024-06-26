@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:origin_novel/app/database/app_database.dart';
 import 'package:origin_novel/app/routes/app_pages.dart';
 import 'package:origin_novel/app/theme/app_theme.dart';
+import 'package:origin_novel/src/rust/api/simple.dart';
 
+import './src/rust/frb_generated.dart';
 import 'app/l10n/generated/l10n.dart';
 import 'app/net/http_client.dart';
 import 'app/routes/app_routes.dart';
@@ -20,6 +22,10 @@ Future<void> main() async {
   await Http.init();
   // 初始化isar
   await AppDatabase.init();
+  // 初始化rust
+  await RustLib.init();
+  // 测试
+  await request();
 
   runApp(const MyApp());
 }
