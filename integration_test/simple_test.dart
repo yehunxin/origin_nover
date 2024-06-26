@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:origin_novel/main.dart';
-import 'package:origin_novel/src/rust/frb_generated.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:origin_novel/backend/rust/frb_generated.dart';
+import 'package:origin_novel/main.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
